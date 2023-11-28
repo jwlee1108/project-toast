@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from "./ToastForm.module.css";
 import Button from "../Button";
+import { ToastsContext } from '../../providers/ToastsProvider';
 
 import { VARIANT_OPTIONS, DEFAULT_OPTION_INDEX } from '../../constants/constants';
 
-function ToastForm({ setToasts }) {
+function ToastForm() {
+  const { setToasts } = React.useContext(ToastsContext);
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[DEFAULT_OPTION_INDEX]);
   function handleSubmit(ev) {

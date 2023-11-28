@@ -2,12 +2,11 @@ import React from 'react';
 
 import ToastForm from '../ToastForm';
 import ToastShelf from '../ToastShelf';
+import ToastsProvider from '../../providers/ToastsProvider';
 
 import styles from './ToastPlayground.module.css';
 
 function ToastPlayground() {
-  const [toasts, setToasts] = React.useState([]);
-
   return (
     <div className={styles.wrapper}>
       <header>
@@ -15,8 +14,10 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf toasts={toasts} setToasts={setToasts} />
-      <ToastForm setToasts={setToasts} />
+      <ToastsProvider>
+        <ToastShelf />
+        <ToastForm />
+      </ToastsProvider>
     </div>
   );
 }
